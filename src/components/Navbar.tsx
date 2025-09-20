@@ -164,7 +164,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="sticky top-0 left-0 right-0 z-50 
-                 bg-gray-900/95 dark:bg-gray-900/70 
+                 bg-white/10 dark:bg-gray-900/70 
                  backdrop-blur-md shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -190,8 +190,8 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 className={`relative px-2 py-1 text-[15px] lg:text-[16px] font-semibold transition-colors 
                   ${
                     activeItem === item.id
-                      ? 'text-blue-400 underline underline-offset-4 decoration-2'
-                      : 'text-gray-300 hover:text-blue-400'
+                      ? 'text-blue-600 dark:text-blue-400 underline underline-offset-4 decoration-2'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -207,9 +207,9 @@ export default function Navbar({ activeSection }: NavbarProps) {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-gray-600 dark:text-gray-300 
-                         hover:text-blue-400 
-                         hover:bg-gray-800"
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 
+                         hover:text-blue-600 dark:hover:text-blue-400 
+                         hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -226,7 +226,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
             exit={{ y: -200, opacity: 0 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
             className="absolute top-full left-0 w-full max-h-[60vh] 
-                       bg-gray-900/95 
+                       bg-white/95 dark:bg-gray-900/95 
                        backdrop-blur-md shadow-lg 
                        flex flex-col items-center 
                        z-40 space-y-4 pt-6 overflow-y-auto"
@@ -238,8 +238,8 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 className={`w-full text-center text-lg font-semibold py-2 transition-colors
                   ${
                     activeItem === item.id
-                      ? 'text-blue-400 underline underline-offset-4 decoration-2'
-                      : 'text-gray-300 hover:text-blue-400'
+                      ? 'text-blue-600 dark:text-blue-400 underline underline-offset-4 decoration-2'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
