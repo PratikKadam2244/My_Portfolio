@@ -50,58 +50,68 @@ export default function About() {
         >
           <Card className="max-w-6xl mx-auto backdrop-blur-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl rounded-3xl overflow-hidden">
             <CardContent className="p-8 md:p-12 lg:p-16">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch min-h-[500px]">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 {/* Image Section */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30">
-                  <div className="relative group h-full w-full">
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8, x: -100 }}
+                  whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.8, type: "spring", stiffness: 100 }}
+                  className="lg:col-span-1 flex justify-center"
+                >
+                  <div className="relative group w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
                     {/* Animated Background Rings */}
                     <motion.div
                       animate={{ 
                         scale: [1, 1.1, 1],
-                        rotate: [0, 180, 360]
+                        rotate: [0, 360]
+                      }}
+                      transition={{ 
+                        duration: 10, 
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                      className="absolute inset-0 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 rounded-full"
+                    />
+                    <motion.div
+                      animate={{ 
+                        scale: [1.1, 1, 1.1],
+                        rotate: [360, 0]
                       }}
                       transition={{ 
                         duration: 8, 
                         repeat: Infinity,
                         ease: "linear"
                       }}
-                      className="absolute inset-0 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-200"
-                    />
-                    <motion.div
-                      animate={{ 
-                        scale: [1.1, 1, 1.1],
-                        rotate: [360, 180, 0]
-                      }}
-                      transition={{ 
-                        duration: 6, 
-                        repeat: Infinity,
-                        ease: "linear"
-                      }}
-                      className="absolute inset-4 bg-gradient-to-bl from-cyan-400 via-blue-400 to-indigo-400 blur-xl opacity-15 group-hover:opacity-30 transition-opacity duration-200"
+                      className="absolute inset-4 bg-gradient-to-bl from-cyan-400 via-blue-400 to-indigo-400 blur-xl opacity-15 group-hover:opacity-30 transition-opacity duration-500 rounded-full"
                     />
                     
-                    <motion.img
-                      src="/pk1.JPG"
-                      alt="Pratik Kadam"
-                      className="relative h-full w-full object-cover shadow-2xl transition-all duration-200 ease-in-out"
-                      whileHover={{ 
-                        scale: 1.1
-                      }}
-                      transition={{ duration: 0.2 }}
-                    />
+                    <div className="relative h-full w-full rounded-full overflow-hidden shadow-2xl border-4 border-white/20 dark:border-gray-700/50">
+                      <motion.img
+                        src="/pk1.JPG"
+                        alt="Pratik Kadam"
+                        className="h-full w-full object-cover"
+                        whileHover={{ 
+                          scale: 1.1,
+                          rotate: 5
+                        }}
+                        transition={{ duration: 0.3, type: "spring", stiffness: 200 }}
+                      />
+                    </div>
                     
                     {/* Floating Elements */}
                     <motion.div
                       animate={{ 
                         y: [-10, 10, -10],
-                        x: [-5, 5, -5]
+                        x: [-5, 5, -5],
+                        rotate: [0, 10, 0]
                       }}
                       transition={{ 
                         duration: 4, 
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
-                      className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white p-3 rounded-full shadow-lg"
+                      className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
                     >
                       <Code2 size={20} />
                     </motion.div>
@@ -109,7 +119,8 @@ export default function About() {
                     <motion.div
                       animate={{ 
                         y: [10, -10, 10],
-                        x: [5, -5, 5]
+                        x: [5, -5, 5],
+                        rotate: [0, -10, 0]
                       }}
                       transition={{ 
                         duration: 5, 
@@ -117,42 +128,92 @@ export default function About() {
                         ease: "easeInOut",
                         delay: 1
                       }}
-                      className="absolute -bottom-4 -left-4 bg-gradient-to-r from-green-500 to-cyan-500 text-white p-3 rounded-full shadow-lg"
+                      className="absolute -bottom-4 -left-4 bg-gradient-to-r from-green-500 to-cyan-500 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
                     >
                       <Rocket size={20} />
                     </motion.div>
+                    
+                    {/* Additional floating elements */}
+                    <motion.div
+                      animate={{ 
+                        y: [-8, 8, -8],
+                        x: [8, -8, 8],
+                        rotate: [0, 15, 0]
+                      }}
+                      transition={{ 
+                        duration: 6, 
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 2
+                      }}
+                      className="absolute top-1/2 -left-6 bg-gradient-to-r from-orange-500 to-red-500 text-white p-2 rounded-full shadow-lg"
+                    >
+                      <Heart size={16} />
+                    </motion.div>
+                    
+                    <motion.div
+                      animate={{ 
+                        y: [8, -8, 8],
+                        x: [-8, 8, -8],
+                        rotate: [0, -15, 0]
+                      }}
+                      transition={{ 
+                        duration: 7, 
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 3
+                      }}
+                      className="absolute top-1/2 -right-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-2 rounded-full shadow-lg"
+                    >
+                      <Zap size={16} />
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Text Section */}
-                <div className="text-center lg:text-left space-y-6 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                <div className="lg:col-span-2 text-center lg:text-left space-y-6 flex flex-col justify-center">
                   <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
+                    transition={{ delay: 0.5, duration: 0.8, type: "spring", stiffness: 100 }}
                   >
                     <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                       Career Objective
                     </h3>
                     <div className="space-y-4 text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                      <p>
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6, duration: 0.6 }}
+                      >
                         As a dedicated <span className="font-semibold text-blue-600 dark:text-blue-400">Full Stack Java Developer</span> 
                         with hands-on experience in modern web technologies, I am passionate about creating 
                         robust, scalable applications that solve real-world problems and deliver exceptional user experiences.
-                      </p>
-                      <p>
+                      </motion.p>
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.7, duration: 0.6 }}
+                      >
                         My expertise spans across <span className="text-purple-600 dark:text-purple-400 font-medium">Java, Spring Boot, Angular</span>, 
                         and various databases, combined with a strong foundation in 
                         <span className="font-medium text-green-600 dark:text-green-400"> system design</span> and 
                         <span className="font-medium text-orange-600 dark:text-orange-400"> software architecture</span>.
-                      </p>
-                      <p>
+                      </motion.p>
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.8, duration: 0.6 }}
+                      >
                         I thrive in <span className="text-blue-600 dark:text-blue-400 font-medium">collaborative environments</span> 
                         and am always eager to learn new technologies while contributing to 
                         <span className="text-purple-600 dark:text-purple-400 font-medium"> innovative projects</span> 
                         that make a positive impact on businesses and communities.
-                      </p>
+                      </motion.p>
                     </div>
                   </motion.div>
 
@@ -161,12 +222,16 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
+                    transition={{ delay: 0.9, duration: 0.8 }}
                     className="flex flex-wrap gap-3 justify-center lg:justify-start"
                   >
                     {values.map((value, index) => (
                       <motion.div
                         key={index}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.9 + (index * 0.1), duration: 0.5 }}
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className="group"

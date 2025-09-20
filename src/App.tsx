@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ThemeProvider } from './providers/ThemeProvider';
+import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,7 +15,8 @@ import Footer from './components/Footer';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
-  const [showWhatsApp, setShowWhatsApp] = useState(true); // Always visible
+  const [showWhatsApp, setShowWhatsApp] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,9 +43,26 @@ function App() {
     window.open('https://wa.me/918975623356?text=Hello%20Pratik,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.', '_blank');
   };
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return (
+      <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
+        <LoadingScreen onComplete={handleLoadingComplete} />
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+      >
         <Navbar activeSection={activeSection} />
         <main>
           <Hero />
@@ -95,7 +114,7 @@ function App() {
             </span> */}
           </button>
         </motion.div>
-      </div>
+      </motion.div>
     </ThemeProvider>
   );
 }
