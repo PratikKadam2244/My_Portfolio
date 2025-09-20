@@ -3,41 +3,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
   Code2, 
-  Lightbulb, 
-  Users, 
-  Target, 
   Heart, 
   Zap,
   Coffee,
   Rocket
 } from "lucide-react";
-
-const philosophyItems = [
-  {
-    icon: Code2,
-    title: "Clean Code Philosophy",
-    description: "I believe in writing code that is not just functional, but elegant, maintainable, and self-documenting.",
-    color: "from-blue-500 to-cyan-500"
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation Mindset",
-    description: "Always exploring new technologies and methodologies to solve problems in creative and efficient ways.",
-    color: "from-yellow-500 to-orange-500"
-  },
-  {
-    icon: Users,
-    title: "Collaborative Spirit",
-    description: "Strong believer in teamwork, knowledge sharing, and building solutions that benefit the entire community.",
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    icon: Target,
-    title: "Goal-Oriented Approach",
-    description: "Focused on delivering results that align with business objectives while maintaining high quality standards.",
-    color: "from-purple-500 to-pink-500"
-  }
-];
 
 const values = [
   { label: "Problem Solving", icon: Zap },
@@ -80,10 +50,10 @@ export default function About() {
         >
           <Card className="max-w-6xl mx-auto backdrop-blur-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl rounded-3xl overflow-hidden">
             <CardContent className="p-8 md:p-12 lg:p-16">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch min-h-[500px]">
                 {/* Image Section */}
-                <div className="flex justify-center lg:justify-start">
-                  <div className="relative group">
+                <div className="relative overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30">
+                  <div className="relative group h-full w-full">
                     {/* Animated Background Rings */}
                     <motion.div
                       animate={{ 
@@ -95,7 +65,7 @@ export default function About() {
                         repeat: Infinity,
                         ease: "linear"
                       }}
-                      className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+                      className="absolute inset-0 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-200"
                     />
                     <motion.div
                       animate={{ 
@@ -107,19 +77,17 @@ export default function About() {
                         repeat: Infinity,
                         ease: "linear"
                       }}
-                      className="absolute inset-2 rounded-full bg-gradient-to-bl from-cyan-400 via-blue-400 to-indigo-400 blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"
+                      className="absolute inset-4 bg-gradient-to-bl from-cyan-400 via-blue-400 to-indigo-400 blur-xl opacity-15 group-hover:opacity-30 transition-opacity duration-200"
                     />
                     
                     <motion.img
                       src="/pk1.JPG"
                       alt="Pratik Kadam"
-                      className="relative h-48 w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 object-cover rounded-full shadow-2xl border-4 border-white dark:border-gray-700 transition-all duration-700 ease-in-out"
+                      className="relative h-full w-full object-cover shadow-2xl transition-all duration-200 ease-in-out"
                       whileHover={{ 
-                        scale: 1.05,
-                        rotate: 2,
-                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                        scale: 1.1
                       }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      transition={{ duration: 0.2 }}
                     />
                     
                     {/* Floating Elements */}
@@ -157,7 +125,7 @@ export default function About() {
                 </div>
 
                 {/* Text Section */}
-                <div className="lg:col-span-2 text-center lg:text-left space-y-6">
+                <div className="text-center lg:text-left space-y-6 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
                   <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -219,67 +187,12 @@ export default function About() {
           </Card>
         </motion.div>
 
-        {/* Workplace Philosophy Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Workplace Philosophy
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              The principles and values that guide my approach to software development and professional collaboration
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {philosophyItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * index, duration: 0.8 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group"
-              >
-                <Card className="h-full bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden">
-                  <CardContent className="p-6 md:p-8">
-                    <div className="flex items-start gap-4">
-                      <motion.div
-                        whileHover={{ rotate: 360, scale: 1.1 }}
-                        transition={{ duration: 0.6 }}
-                        className={`p-3 md:p-4 rounded-2xl bg-gradient-to-br ${item.color} flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
-                      >
-                        <item.icon size={24} className="text-white" />
-                      </motion.div>
-                      
-                      <div className="flex-1 space-y-3">
-                        <h4 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                          {item.title}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
         >
           {[
